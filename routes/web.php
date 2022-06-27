@@ -25,12 +25,21 @@ Route::group(['prefix' => 'admin'], function () {
     Route::post( '/delete', [\App\Http\Controllers\Admin\AdminController::class, 'destroy']);
 });
 
-Route::group(['prefix' => 'member'], function () {
-    Route::get( '/', [\App\Http\Controllers\Admin\MemberController::class, 'index']);
-    Route::get( '/tambah', [\App\Http\Controllers\Admin\MemberController::class, 'add_page']);
-    Route::post( '/create', [\App\Http\Controllers\Admin\MemberController::class, 'create']);
-    Route::get( '/edit/{id}', [\App\Http\Controllers\Admin\MemberController::class, 'edit_page']);
-    Route::post( '/patch', [\App\Http\Controllers\Admin\MemberController::class, 'patch']);
-    Route::post( '/delete', [\App\Http\Controllers\Admin\MemberController::class, 'destroy']);
+Route::group(['prefix' => 'jurusan'], function () {
+    Route::get( '/', [\App\Http\Controllers\Admin\JurusanController::class, 'index']);
+    Route::get( '/tambah', [\App\Http\Controllers\Admin\JurusanController::class, 'add_page']);
+    Route::post( '/create', [\App\Http\Controllers\Admin\JurusanController::class, 'create']);
+    Route::get( '/edit/{id}', [\App\Http\Controllers\Admin\JurusanController::class, 'edit_page']);
+    Route::post( '/patch', [\App\Http\Controllers\Admin\JurusanController::class, 'patch']);
+    Route::post( '/delete', [\App\Http\Controllers\Admin\JurusanController::class, 'destroy']);
+});
+
+Route::group(['prefix' => 'kelas'], function () {
+    Route::get( '/', [\App\Http\Controllers\Admin\KelasController::class, 'index']);
+    Route::get( '/tambah', [\App\Http\Controllers\Admin\KelasController::class, 'add_page']);
+    Route::post( '/create', [\App\Http\Controllers\Admin\KelasController::class, 'create']);
+    Route::get( '/edit/{id}', [\App\Http\Controllers\Admin\KelasController::class, 'edit_page']);
+    Route::post( '/patch', [\App\Http\Controllers\Admin\KelasController::class, 'patch']);
+    Route::post( '/delete', [\App\Http\Controllers\Admin\KelasController::class, 'destroy']);
 });
 
