@@ -23,7 +23,8 @@ class KelasController extends CustomController
 
     public function add_page()
     {
-        return view('admin.data.kelas.add');
+        $jurusan = Jurusan::all();
+        return view('admin.data.kelas.add')->with(['jurusan' => $jurusan]);
     }
 
     public function create()
@@ -43,7 +44,8 @@ class KelasController extends CustomController
     public function edit_page($id)
     {
         $data = Kelas::findOrFail($id);
-        return view('admin.data.kelas.edit')->with(['data' => $data]);
+        $jurusan = Jurusan::all();
+        return view('admin.data.kelas.edit')->with(['data' => $data, 'jurusan' => $jurusan]);
     }
 
     public function patch()

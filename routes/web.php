@@ -25,6 +25,24 @@ Route::group(['prefix' => 'admin'], function () {
     Route::post( '/delete', [\App\Http\Controllers\Admin\AdminController::class, 'destroy']);
 });
 
+Route::group(['prefix' => 'guru'], function () {
+    Route::get( '/', [\App\Http\Controllers\Admin\GuruController::class, 'index']);
+    Route::get( '/tambah', [\App\Http\Controllers\Admin\GuruController::class, 'add_page']);
+    Route::post( '/create', [\App\Http\Controllers\Admin\GuruController::class, 'create']);
+    Route::get( '/edit/{id}', [\App\Http\Controllers\Admin\GuruController::class, 'edit_page']);
+    Route::post( '/patch', [\App\Http\Controllers\Admin\GuruController::class, 'patch']);
+    Route::post( '/delete', [\App\Http\Controllers\Admin\GuruController::class, 'destroy']);
+});
+
+Route::group(['prefix' => 'siswa'], function () {
+    Route::get( '/', [\App\Http\Controllers\Admin\SiswaController::class, 'index']);
+    Route::get( '/tambah', [\App\Http\Controllers\Admin\SiswaController::class, 'add_page']);
+    Route::post( '/create', [\App\Http\Controllers\Admin\SiswaController::class, 'create']);
+    Route::get( '/edit/{id}', [\App\Http\Controllers\Admin\SiswaController::class, 'edit_page']);
+    Route::post( '/patch', [\App\Http\Controllers\Admin\SiswaController::class, 'patch']);
+    Route::post( '/delete', [\App\Http\Controllers\Admin\SiswaController::class, 'destroy']);
+});
+
 Route::group(['prefix' => 'jurusan'], function () {
     Route::get( '/', [\App\Http\Controllers\Admin\JurusanController::class, 'index']);
     Route::get( '/tambah', [\App\Http\Controllers\Admin\JurusanController::class, 'add_page']);
@@ -41,5 +59,14 @@ Route::group(['prefix' => 'kelas'], function () {
     Route::get( '/edit/{id}', [\App\Http\Controllers\Admin\KelasController::class, 'edit_page']);
     Route::post( '/patch', [\App\Http\Controllers\Admin\KelasController::class, 'patch']);
     Route::post( '/delete', [\App\Http\Controllers\Admin\KelasController::class, 'destroy']);
+});
+
+Route::group(['prefix' => 'pengajuan'], function () {
+    Route::get( '/', [\App\Http\Controllers\Siswa\PengajuanController::class, 'index']);
+    Route::get( '/tambah', [\App\Http\Controllers\Siswa\PengajuanController::class, 'add_page']);
+    Route::post( '/create', [\App\Http\Controllers\Siswa\PengajuanController::class, 'create']);
+    Route::get( '/edit/{id}', [\App\Http\Controllers\Siswa\PengajuanController::class, 'edit_page']);
+    Route::post( '/patch', [\App\Http\Controllers\Siswa\PengajuanController::class, 'patch']);
+    Route::post( '/delete', [\App\Http\Controllers\Siswa\PengajuanController::class, 'destroy']);
 });
 

@@ -17,13 +17,13 @@
     @endif
     <div class="container-fluid pt-3">
         <div class="d-flex align-items-center justify-content-between mb-3">
-            <p class="font-weight-bold mb-0" style="font-size: 20px">Halaman Jurusan</p>
+            <p class="font-weight-bold mb-0" style="font-size: 20px">Halaman Kelas</p>
             <ol class="breadcrumb breadcrumb-transparent mb-0">
                 <li class="breadcrumb-item">
                     <a href="/dashboard">Dashboard</a>
                 </li>
                 <li class="breadcrumb-item">
-                    <a href="/jurusan">Jurusan</a>
+                    <a href="/kelas">Kelas</a>
                 </li>
                 <li class="breadcrumb-item active" aria-current="page">Edit
                 </li>
@@ -34,9 +34,17 @@
                 <div class="col-lg-5 col-md-6 col-sm-11">
                     <div class="card">
                         <div class="card-body">
-                            <form method="post" action="/jurusan/patch">
+                            <form method="post" action="/kelas/patch">
                                 @csrf
                                 <input type="hidden" name="id" value="{{ $data->id }}">
+                                <div class="form-group w-100 mb-1">
+                                    <label for="jurusan">Jurusan</label>
+                                    <select class="form-control" id="jurusan" name="jurusan">
+                                        @foreach($jurusan as $v)
+                                            <option value="{{ $v->id }}" {{ $v->id == $data->jurusan->id ? 'selected' : '' }}>{{ $v->nama }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
                                 <div class="w-100 mb-1">
                                     <label for="nama" class="form-label">Nama</label>
                                     <input type="text" class="form-control" id="nama" placeholder="nama"

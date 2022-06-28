@@ -17,13 +17,13 @@
     @endif
     <div class="container-fluid pt-3">
         <div class="d-flex align-items-center justify-content-between mb-3">
-            <p class="font-weight-bold mb-0" style="font-size: 20px">Halaman Kelas</p>
+            <p class="font-weight-bold mb-0" style="font-size: 20px">Halaman Pengajuan Laporan</p>
             <ol class="breadcrumb breadcrumb-transparent mb-0">
                 <li class="breadcrumb-item">
                     <a href="/dashboard">Dashboard</a>
                 </li>
                 <li class="breadcrumb-item">
-                    <a href="/kelas">Kelas</a>
+                    <a href="/pengajuan">Pengajuan Judul Laporan</a>
                 </li>
                 <li class="breadcrumb-item active" aria-current="page">Tambah
                 </li>
@@ -31,23 +31,20 @@
         </div>
         <div class="w-100 p-2">
             <div class="row justify-content-center">
-                <div class="col-lg-5 col-md-6 col-sm-11">
+                <div class="col-lg-8 col-md-6 col-sm-11">
                     <div class="card">
                         <div class="card-body">
-                            <form method="post" action="/kelas/create">
+                            <form method="post" action="/pengajuan/create" enctype="multipart/form-data">
                                 @csrf
-                                <div class="form-group w-100 mb-1">
-                                    <label for="jurusan">Jurusan</label>
-                                    <select class="form-control" id="jurusan" name="jurusan">
-                                        @foreach($jurusan as $v)
-                                            <option value="{{ $v->id }}">{{ $v->nama }}</option>
-                                        @endforeach
-                                    </select>
+                                <div class="w-100 mb-1">
+                                    <label for="judul" class="form-label">Judul Laporan</label>
+                                    <input type="text" class="form-control" id="judul" placeholder="Judul Laporan"
+                                           name="judul">
                                 </div>
                                 <div class="w-100 mb-1">
-                                    <label for="nama" class="form-label">Nama</label>
-                                    <input type="text" class="form-control" id="nama" placeholder="nama"
-                                           name="nama">
+                                    <label for="file" class="form-label">File Laporan</label>
+                                    <input type="file" class="form-control-file" id="file" placeholder="File"
+                                           name="file">
                                 </div>
                                 <div class="w-100 mb-2 mt-3 text-right">
                                     <button type="submit" class="btn btn-primary">Simpan</button>
