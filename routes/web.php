@@ -70,3 +70,13 @@ Route::group(['prefix' => 'pengajuan'], function () {
     Route::post( '/delete', [\App\Http\Controllers\Siswa\PengajuanController::class, 'destroy']);
 });
 
+Route::group(['prefix' => 'pengajuan-laporan'], function () {
+    Route::get( '/', [\App\Http\Controllers\Admin\PengajuanController::class, 'index']);
+    Route::get( '/detail/{id}', [\App\Http\Controllers\Admin\PengajuanController::class, 'detail']);
+    Route::post( '/patch', [\App\Http\Controllers\Admin\PengajuanController::class, 'patch']);
+});
+
+Route::group(['prefix' => 'konsultasi'], function () {
+    Route::get( '/{id}', [\App\Http\Controllers\Siswa\KonsultasiController::class, 'index']);
+});
+

@@ -16,7 +16,8 @@ class Pengajuan extends Model
         'pembimbing_id',
         'judul',
         'file',
-        'status'
+        'status',
+        'deskripsi'
     ];
 
     public function user()

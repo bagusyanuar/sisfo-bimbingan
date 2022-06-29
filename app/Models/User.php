@@ -47,4 +47,9 @@ class User extends Authenticatable
     {
         return $this->hasOne(Guru::class, 'user_id');
     }
+
+    public function pengajuan_success()
+    {
+        return $this->hasOne(Pengajuan::class, 'user_id')->where('status', 'terima');
+    }
 }

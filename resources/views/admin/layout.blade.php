@@ -118,23 +118,16 @@
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fa fa-briefcase"></i>
                                 <p>
-                                    Transaksi
+                                    Pengajuan
                                     <i class="right fa fa-angle-down"></i>
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="/penerimaan"
+                                    <a href="/pengajuan-laporan"
                                        class="nav-link">
                                         <i class="fa fa-circle-o nav-icon" aria-hidden="true"></i>
-                                        <p>Penerimaan</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="/pengembalian"
-                                       class="nav-link">
-                                        <i class="fa fa-circle-o nav-icon" aria-hidden="true"></i>
-                                        <p>Pengembalian</p>
+                                        <p>Pengajuan Laporan</p>
                                     </a>
                                 </li>
                             </ul>

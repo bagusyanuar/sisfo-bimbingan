@@ -11,46 +11,44 @@
     @endif
     <div class="container-fluid pt-3">
         <div class="d-flex align-items-center justify-content-between mb-3">
-            <p class="font-weight-bold mb-0" style="font-size: 20px">Halaman Pengajuan Laporan</p>
+            <p class="font-weight-bold mb-0" style="font-size: 20px">Halaman Pengajuan Laporan Siswa</p>
             <ol class="breadcrumb breadcrumb-transparent mb-0">
                 <li class="breadcrumb-item">
                     <a href="/dashboard">Dashboard</a>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page">Pengajuan Laporan
+                <li class="breadcrumb-item active" aria-current="page">Pengajuan Laporan Siswa
                 </li>
             </ol>
         </div>
         <div class="w-100 p-2">
-            @if($pengajuan->pengajuan_success == null)
-                <div class="text-right mb-2 pr-3">
-                    <a href="/pengajuan/tambah" class="btn btn-primary"><i class="fa fa-plus mr-1"></i><span
-                            class="font-weight-bold">Tambah</span></a>
-                </div>
-            @endif
             <table id="table-data" class="display w-100 table table-bordered">
                 <thead>
                 <tr>
                     <th width="5%" class="text-center">#</th>
+                    <th>NIS</th>
+                    <th>Nama</th>
+                    <th>Kelas</th>
                     <th>Judul</th>
-                    <th>File Pengajuan</th>
+                    <th>File</th>
                     <th>Pembimbing</th>
                     <th>Status</th>
-                    <th>Deskripsi</th>
-                    <th width="12%">Action</th>
+                    <th width="10%" class="text-center">Action</th>
                 </tr>
                 </thead>
                 <tbody>
                 @foreach($data as $v)
                     <tr>
                         <td width="5%" class="text-center">{{ $loop->index + 1 }}</td>
+                        <td>{{ $v->user->username }}</td>
+                        <td>{{ $v->user->siswa->nama }}</td>
+                        <td>{{ $v->user->siswa->kelas->nama }}</td>
                         <td>{{ $v->judul }}</td>
                         <td><a href="{{ asset('/file').'/'.$v->file }}" target="_blank">{{ $v->file }}</a></td>
                         <td>{{$v->pembimbing != null ? $v->pembimbing->guru->nama : '-'}}</td>
                         <td>{{ $v->status }}</td>
-                        <td>{{ $v->deskripsi }}</td>
                         <td class="text-center">
-                            @if($v->status == 'terima')
-                                <a href="/konsultasi/{{ $v->id }}" class="btn btn-sm btn-info btn-detail"
+                            @if($v->status == 'menunggu')
+                                <a href="/pengajuan-laporan/detail/{{ $v->id }}" class="btn btn-sm btn-info btn-detail"
                                    data-id="{{ $v->id }}"><i class="fa fa-edit"></i></a>
                             @else
                                 <span>-</span>
@@ -69,13 +67,15 @@
     <script src="{{ asset('/js/helper.js') }}"></script>
     <script type="text/javascript">
         function destroy(id) {
-            AjaxPost('/admin/delete', {id}, function () {
+            AjaxPost('/kelas/delete', {id}, function () {
                 window.location.reload();
             });
         }
 
         $(document).ready(function () {
-            $('#table-data').DataTable();
+            $('#table-data').DataTable({
+                scrollX: true
+            });
             $('.btn-delete').on('click', function (e) {
                 e.preventDefault();
                 let id = this.dataset.id;

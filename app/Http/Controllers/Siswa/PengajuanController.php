@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Siswa;
 
 use App\Helper\CustomController;
 use App\Models\Pengajuan;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 class PengajuanController extends CustomController
@@ -18,10 +19,11 @@ class PengajuanController extends CustomController
 
     public function index()
     {
-        $data = Pengajuan::with(['user.siswa', 'pembimbing.guru'])
+        $pengajuan = User::with('pengajuan_success')->where('id', Auth::id())->first();
+        $data = Pengajuan::with(['user.siswa', 'user.pengajuan_success' ,'pembimbing.guru'])
             ->where('user_id', '=', Auth::id())
             ->get();
-        return view('siswa.pengajuan.index')->with(['data' => $data]);
+        return view('siswa.pengajuan.index')->with(['data' => $data, 'pengajuan' => $pengajuan]);
     }
 
     public function add_page()
