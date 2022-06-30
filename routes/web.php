@@ -78,5 +78,13 @@ Route::group(['prefix' => 'pengajuan-laporan'], function () {
 
 Route::group(['prefix' => 'konsultasi'], function () {
     Route::get( '/{id}', [\App\Http\Controllers\Siswa\KonsultasiController::class, 'index']);
+    Route::get( '/{id}/tambah', [\App\Http\Controllers\Siswa\KonsultasiController::class, 'add_page']);
+    Route::post( '/{id}/create', [\App\Http\Controllers\Siswa\KonsultasiController::class, 'create']);
+});
+
+Route::group(['prefix' => 'konsultasi-guru'], function () {
+    Route::get( '/', [\App\Http\Controllers\Guru\KonsultasiController::class, 'index']);
+    Route::get( '/detail/{id}', [\App\Http\Controllers\Guru\KonsultasiController::class, 'detail']);
+    Route::post( '/patch', [\App\Http\Controllers\Guru\KonsultasiController::class, 'patch']);
 });
 

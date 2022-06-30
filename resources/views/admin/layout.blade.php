@@ -142,6 +142,15 @@
                             </a>
                         </li>
                     @endif
+                    @if(auth()->user()->role == 'guru')
+                        <li class="nav-item">
+                            <a href="/konsultasi-guru"
+                               class="nav-link">
+                                <i class="fa fa-briefcase nav-icon" aria-hidden="true"></i>
+                                <p>Konsultasi</p>
+                            </a>
+                        </li>
+                    @endif
 
                 </nav>
             </ul>

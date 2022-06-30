@@ -9,6 +9,13 @@
             Swal.fire("Berhasil!", '{{\Illuminate\Support\Facades\Session::get('success')}}', "success")
         </script>
     @endif
+
+    @if (\Illuminate\Support\Facades\Session::has('failed'))
+        <script>
+            Swal.fire("Gagal", '{{\Illuminate\Support\Facades\Session::get('failed')}}', "error")
+        </script>
+    @endif
+
     <div class="container-fluid pt-3">
         <div class="d-flex align-items-center justify-content-between mb-3">
             <p class="font-weight-bold mb-0" style="font-size: 20px">Halaman Konsultasi Laporan</p>
@@ -54,38 +61,45 @@
                 </div>
             </div>
             <div class="text-right mb-2 pr-3">
-                <a href="/konsultasi/tambah" class="btn btn-primary"><i class="fa fa-plus mr-1"></i><span
+                <a href="/konsultasi/{{ $data->id }}/tambah" class="btn btn-primary"><i
+                        class="fa fa-plus mr-1"></i><span
                         class="font-weight-bold">Tambah Konsultasi</span></a>
             </div>
             <table id="table-data" class="display w-100 table table-bordered">
                 <thead>
                 <tr>
                     <th width="5%" class="text-center">#</th>
-                    <th>Judul</th>
-                    <th>File Pengajuan</th>
-                    <th>Pembimbing</th>
+                    <th>Tanggal</th>
+                    <th>Judul Konsultasi</th>
+                    <th>File Konsultasi</th>
+                    <th>File Revisi</th>
+                    <th>Keterangan</th>
                     <th>Status</th>
-                    <th width="12%">Action</th>
                 </tr>
                 </thead>
                 <tbody>
-{{--                @foreach($data as $v)--}}
-{{--                    <tr>--}}
-{{--                        <td width="5%" class="text-center">{{ $loop->index + 1 }}</td>--}}
-{{--                        <td>{{ $v->judul }}</td>--}}
-{{--                        <td><a href="{{ asset('/file').'/'.$v->file }}" target="_blank">{{ $v->file }}</a></td>--}}
-{{--                        <td>{{$v->pembimbing != null ? $v->pembimbing->guru->nama : '-'}}</td>--}}
-{{--                        <td>{{ $v->status }}</td>--}}
-{{--                        <td class="text-center">--}}
-{{--                            @if($v->status == 'terima')--}}
-{{--                                <a href="/konsultasi/{{ $v->id }}" class="btn btn-sm btn-info btn-detail"--}}
-{{--                                   data-id="{{ $v->id }}"><i class="fa fa-edit"></i></a>--}}
-{{--                            @else--}}
-{{--                                <span>-</span>--}}
-{{--                            @endif--}}
-{{--                        </td>--}}
-{{--                    </tr>--}}
-{{--                @endforeach--}}
+                @foreach($data->konsultasi as $v)
+                    <tr>
+                        <td width="5%" class="text-center">{{ $loop->index + 1 }}</td>
+                        <td>{{ $v->tanggal }}</td>
+                        <td>{{ $v->judul }}</td>
+                        <td>
+                            <a href="{{ asset('/file').'/'.$v->file_konsultasi }}" target="_blank">
+                                {{ $v->file_konsultasi }}
+                            </a>
+                        </td>
+                        <td>
+                            @if($v->file_revisi != null)
+                                <a href="{{ asset('/file').'/'.$v->file_revisi }}" target="_blank">{{ $v->file_revisi }}
+                                </a>
+                            @else
+                                <span>-</span>
+                            @endif
+                        </td>
+                        <td>{{ $v->keterangan }}</td>
+                        <td>{{ $v->status }}</td>
+                    </tr>
+                @endforeach
                 </tbody>
             </table>
         </div>

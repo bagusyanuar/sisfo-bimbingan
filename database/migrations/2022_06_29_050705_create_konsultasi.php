@@ -18,7 +18,7 @@ class CreateKonsultasi extends Migration
             $table->bigInteger('pengajuan_id')->unsigned();
             $table->date('tanggal');
             $table->text('file_konsultasi');
-            $table->text('file_revisi');
+            $table->text('file_revisi')->nullable();
             $table->text('keterangan');
             $table->string('status');
             $table->timestamps();
