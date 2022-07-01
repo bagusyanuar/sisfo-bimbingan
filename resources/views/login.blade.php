@@ -22,7 +22,8 @@
         <div class="col-lg-4 col-md-6 col-sm-11">
             <div class="card">
                 <div class="card-body">
-                    <img src="{{ asset('/assets/icon/logo.png') }}" class="w-100 login-icon mb-3"/>
+{{--                    <img src="{{ asset('/assets/icon/logo.png') }}" class="w-100 login-icon mb-3"/>--}}
+                    <p class="f-bold text-center">SISTEM INFORMASI BIMBINGAN SMK MUHAMMADIYAH 1 SUKOHARJO</p>
                     <p class="f-bold mb-2 text-center" style="font-size: 18px">FORM LOGIN</p>
                     <form method="post">
                         @csrf
