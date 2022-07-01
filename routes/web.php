@@ -80,11 +80,18 @@ Route::group(['prefix' => 'konsultasi'], function () {
     Route::get( '/{id}', [\App\Http\Controllers\Siswa\KonsultasiController::class, 'index']);
     Route::get( '/{id}/tambah', [\App\Http\Controllers\Siswa\KonsultasiController::class, 'add_page']);
     Route::post( '/{id}/create', [\App\Http\Controllers\Siswa\KonsultasiController::class, 'create']);
+    Route::get( '/{id}/cetak', [\App\Http\Controllers\Siswa\KonsultasiController::class, 'cetak']);
 });
 
 Route::group(['prefix' => 'konsultasi-guru'], function () {
     Route::get( '/', [\App\Http\Controllers\Guru\KonsultasiController::class, 'index']);
     Route::get( '/detail/{id}', [\App\Http\Controllers\Guru\KonsultasiController::class, 'detail']);
     Route::post( '/patch', [\App\Http\Controllers\Guru\KonsultasiController::class, 'patch']);
+});
+
+Route::group(['prefix' => 'laporan-pengajuan'], function () {
+    Route::get( '/', [\App\Http\Controllers\Admin\LaporanController::class, 'index']);
+    Route::get( '/data', [\App\Http\Controllers\Admin\LaporanController::class, 'data_pengajuan']);
+    Route::get( '/cetak', [\App\Http\Controllers\Admin\LaporanController::class, 'cetak']);
 });
 

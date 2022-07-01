@@ -67,4 +67,15 @@ class KonsultasiController extends CustomController
             return redirect()->back()->with(['failed' => 'Terjadi Kesalahan ' . $e->getMessage()]);
         }
     }
+
+    public function cetak($id)
+    {
+        $data = Pengajuan::with(['user.siswa.kelas.jurusan', 'pembimbing.guru', 'konsultasi' => function ($q) {
+            return $q->orderBy('id', 'ASC');
+        }])
+            ->where('user_id', Auth::id())
+            ->where('id', $id)
+            ->first();
+        return $this->convertToPdf('siswa.konsultasi.cetak', ['data' => $data]);
+    }
 }

@@ -102,6 +102,11 @@
                 @endforeach
                 </tbody>
             </table>
+            <div class="text-right mt-3">
+                <a href="/konsultasi/{{ $data->id }}/cetak" target="_blank" class="btn btn-success"><i
+                        class="fa fa-print mr-2"></i><span
+                        class="font-weight-bold">Cetak</span></a>
+            </div>
         </div>
     </div>
 
