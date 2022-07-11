@@ -38,6 +38,7 @@ class PengajuanController extends CustomController
                 'user_id' => Auth::id(),
                 'judul' => $this->postField('judul'),
                 'status' => 'menunggu',
+                'deskripsi' => 'menunggu pemeriksaan laporan',
                 'tanggal' => now()
             ];
             $nama_file = $this->generateImageName('file');
