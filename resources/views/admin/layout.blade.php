@@ -34,12 +34,12 @@
 </nav>
 <aside class="main-sidebar sidebar-dark-primary elevation-1">
     <div class="sidebar">
-        <a href="/" class="brand-link">
-            <img src="{{ asset('assets/icon/logo.png') }}"
+        <a href="/" class="brand-link d-flex align-items-center">
+            <img src="{{ asset('assets/icon/logo-bimbingan.png') }}"
                  alt="AdminLTE Logo"
                  class="brand-image"
             >
-            <span class="brand-text font-weight-light">Laravel</span>
+            <span class="brand-text font-weight-light" style="font-size: 12px;">SMK MUHAMMADIYAH 1</span>
         </a>
         <div class="my-sidebar-menu">
             <ul class="nav nav-sidebar nav-pills flex-column">
@@ -152,6 +152,13 @@
                         </li>
                     @endif
                     @if(auth()->user()->role == 'siswa')
+                        <li class="nav-item">
+                            <a href="/berkas"
+                               class="nav-link">
+                                <i class="fa fa-sticky-note nav-icon" aria-hidden="true"></i>
+                                <p>Pengumpulan Berkas</p>
+                            </a>
+                        </li>
                         <li class="nav-item">
                             <a href="/pengajuan"
                                class="nav-link">

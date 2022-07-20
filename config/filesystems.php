@@ -61,6 +61,12 @@ return [
             'url' => env('APP_URL') . '/public',
             'visibility' => 'public',
         ],
+        'berkas' => [
+            'driver' => 'local',
+            'root' => public_path() . '/berkas',
+            'url' => env('APP_URL') . '/public',
+            'visibility' => 'public',
+        ],
 
         's3' => [
             'driver' => 's3',

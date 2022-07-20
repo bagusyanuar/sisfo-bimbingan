@@ -61,6 +61,10 @@ Route::group(['prefix' => 'kelas'], function () {
     Route::post( '/delete', [\App\Http\Controllers\Admin\KelasController::class, 'destroy']);
 });
 
+Route::group(['prefix' => 'berkas'], function () {
+    Route::get( '/', [\App\Http\Controllers\Siswa\BerkasController::class, 'index']);
+});
+
 Route::group(['prefix' => 'pengajuan'], function () {
     Route::get( '/', [\App\Http\Controllers\Siswa\PengajuanController::class, 'index']);
     Route::get( '/tambah', [\App\Http\Controllers\Siswa\PengajuanController::class, 'add_page']);
