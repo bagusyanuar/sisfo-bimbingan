@@ -80,6 +80,12 @@ Route::group(['prefix' => 'pengajuan-laporan'], function () {
     Route::post( '/patch', [\App\Http\Controllers\Admin\PengajuanController::class, 'patch']);
 });
 
+Route::group(['prefix' => 'pengajuan-berkas'], function () {
+    Route::get( '/', [\App\Http\Controllers\Admin\BerkasController::class, 'index']);
+    Route::get( '/detail/{id}', [\App\Http\Controllers\Admin\BerkasController::class, 'detail']);
+    Route::post( '/patch', [\App\Http\Controllers\Admin\BerkasController::class, 'patch']);
+});
+
 Route::group(['prefix' => 'konsultasi'], function () {
     Route::get( '/{id}', [\App\Http\Controllers\Siswa\KonsultasiController::class, 'index']);
     Route::get( '/{id}/tambah', [\App\Http\Controllers\Siswa\KonsultasiController::class, 'add_page']);
@@ -91,6 +97,12 @@ Route::group(['prefix' => 'konsultasi-guru'], function () {
     Route::get( '/', [\App\Http\Controllers\Guru\KonsultasiController::class, 'index']);
     Route::get( '/detail/{id}', [\App\Http\Controllers\Guru\KonsultasiController::class, 'detail']);
     Route::post( '/patch', [\App\Http\Controllers\Guru\KonsultasiController::class, 'patch']);
+});
+
+Route::group(['prefix' => 'siswa-bimbingan'], function () {
+    Route::get( '/', [\App\Http\Controllers\Guru\SiswaController::class, 'index']);
+    Route::get( '/detail/{id}', [\App\Http\Controllers\Guru\SiswaController::class, 'detail']);
+    Route::post( '/patch', [\App\Http\Controllers\Guru\SiswaController::class, 'patch']);
 });
 
 Route::group(['prefix' => 'laporan-pengajuan'], function () {

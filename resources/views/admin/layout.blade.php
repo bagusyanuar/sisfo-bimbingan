@@ -124,6 +124,13 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
+                                    <a href="/pengajuan-berkas"
+                                       class="nav-link">
+                                        <i class="fa fa-circle-o nav-icon" aria-hidden="true"></i>
+                                        <p>Pengajuan Berkas</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
                                     <a href="/pengajuan-laporan"
                                        class="nav-link">
                                         <i class="fa fa-circle-o nav-icon" aria-hidden="true"></i>
@@ -156,7 +163,7 @@
                             <a href="/berkas"
                                class="nav-link">
                                 <i class="fa fa-sticky-note nav-icon" aria-hidden="true"></i>
-                                <p>Pengumpulan Berkas</p>
+                                <p>Pengajuan Berkas</p>
                             </a>
                         </li>
                         <li class="nav-item">
@@ -168,6 +175,14 @@
                         </li>
                     @endif
                     @if(auth()->user()->role == 'guru')
+
+                        <li class="nav-item">
+                            <a href="/siswa-bimbingan"
+                               class="nav-link">
+                                <i class="fa fa-user nav-icon" aria-hidden="true"></i>
+                                <p>Siswa Bimbingan</p>
+                            </a>
+                        </li>
                         <li class="nav-item">
                             <a href="/konsultasi-guru"
                                class="nav-link">

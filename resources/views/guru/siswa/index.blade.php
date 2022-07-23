@@ -11,47 +11,49 @@
     @endif
     <div class="container-fluid pt-3">
         <div class="d-flex align-items-center justify-content-between mb-3">
-            <p class="font-weight-bold mb-0" style="font-size: 20px">Halaman Pengajuan Laporan</p>
+            <p class="font-weight-bold mb-0" style="font-size: 20px">Halaman Siswa Bimbingan</p>
             <ol class="breadcrumb breadcrumb-transparent mb-0">
                 <li class="breadcrumb-item">
                     <a href="/dashboard">Dashboard</a>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page">Pengajuan Laporan
+                <li class="breadcrumb-item active" aria-current="page">Konsultasi Siswa Bimbingan
                 </li>
             </ol>
         </div>
         <div class="w-100 p-2">
-            @if($pengajuan->laporan_acc == null)
-                <div class="text-right mb-2 pr-3">
-                    <a href="/pengajuan/tambah" class="btn btn-primary"><i class="fa fa-plus mr-1"></i><span
-                            class="font-weight-bold">Tambah</span></a>
-                </div>
-            @endif
+            {{--            @if($pengajuan->pengajuan_success == null)--}}
+            {{--                <div class="text-right mb-2 pr-3">--}}
+            {{--                    <a href="/pengajuan/tambah" class="btn btn-primary"><i class="fa fa-plus mr-1"></i><span--}}
+            {{--                            class="font-weight-bold">Tambah</span></a>--}}
+            {{--                </div>--}}
+            {{--            @endif--}}
             <table id="table-data" class="display w-100 table table-bordered">
                 <thead>
                 <tr>
                     <th width="5%" class="text-center">#</th>
-                    <th>Judul</th>
-                    <th>File Pengajuan</th>
-                    <th>Pembimbing</th>
+                    <th>NIS</th>
+                    <th>Nama Siswa</th>
+                    <th>Jurusan</th>
+                    <th>Kelas</th>
+                    <th>Pengajuan Judul laporan</th>
                     <th>Status</th>
-                    <th>Deskripsi</th>
-                    <th width="12%">Action</th>
+                    <th width="10%">Action</th>
                 </tr>
                 </thead>
                 <tbody>
                 @foreach($data as $v)
                     <tr>
                         <td width="5%" class="text-center">{{ $loop->index + 1 }}</td>
-                        <td>{{ $v->judul }}</td>
-                        <td><a href="{{ asset('/file').'/'.$v->file }}" target="_blank">{{ $v->file }}</a></td>
-                        <td>{{$v->pembimbing != null ? $v->pembimbing->guru->nama : '-'}}</td>
-                        <td>{{ $v->status }}</td>
-                        <td>{{ $v->deskripsi }}</td>
-                        <td class="text-center">
-                            @if($v->status == 'terima')
-                                <a href="/konsultasi/{{ $v->id }}" class="btn btn-sm btn-info btn-detail"
-                                   data-id="{{ $v->id }}"><i class="fa fa-edit"></i></a>
+                        <td>{{ $v->user->username }}</td>
+                        <td>{{ $v->nama }}</td>
+                        <td>{{ $v->kelas->jurusan->nama }}</td>
+                        <td>{{ $v->kelas->nama }}</td>
+                        <td>{{ $v->user->pengajuan_terakhir != null ? $v->user->pengajuan_terakhir->judul : '-'}}</td>
+                        <td>{{ $v->user->pengajuan_terakhir != null ? $v->user->pengajuan_terakhir->status : '-'}}</td>
+                        <td>
+                            @if($v->user->pengajuan_terakhir != null)
+                                <a href="/siswa-bimbingan/detail/{{ $v->user->pengajuan_terakhir->id }}" class="btn btn-sm btn-info btn-edit"
+                                   data-id="{{ $v->id }}"><i class="fa fa-info"></i></a>
                             @else
                                 <span>-</span>
                             @endif
