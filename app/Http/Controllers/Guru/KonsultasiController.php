@@ -19,7 +19,7 @@ class KonsultasiController extends CustomController
     public function index()
     {
         $data = Konsultasi::with(['pengajuan.user.siswa.kelas.jurusan'])
-            ->whereHas('pengajuan', function ($q) {
+            ->whereHas('pengajuan.user.siswa', function ($q) {
                 $q->where('pembimbing_id', '=', Auth::id());
             })
             ->orderBy('id', 'DESC')
@@ -48,6 +48,7 @@ class KonsultasiController extends CustomController
                 $value['keterangan'] = 'Laporan di ACC';
             } else {
                 $value['keterangan'] = $keterangan;
+                $value['deadline'] = $this->postField('deadline');
                 $nama_file = $this->generateImageName('file');
                 if ($nama_file !== '') {
                     $value['file_revisi'] = $nama_file;

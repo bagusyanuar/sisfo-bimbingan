@@ -14,6 +14,7 @@ class Konsultasi extends Model
     protected $fillable = [
         'pengajuan_id',
         'tanggal',
+        'deadline',
         'judul',
         'file_konsultasi',
         'file_revisi',

@@ -58,6 +58,16 @@ class User extends Authenticatable
         return $this->hasOne(Pengajuan::class, 'user_id')->where('status', 'terima');
     }
 
+    public function laporan_menunggu()
+    {
+        return $this->hasOne(Pengajuan::class, 'user_id')->where('status', 'menunggu');
+    }
+
+    public function laporan_selesai()
+    {
+        return $this->hasOne(Pengajuan::class, 'user_id')->where('status', 'selesai');
+    }
+
     public function pengajuan_terakhir()
     {
         return $this->hasOne(Pengajuan::class, 'user_id')->orderBy('id', 'DESC');

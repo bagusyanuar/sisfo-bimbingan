@@ -26,48 +26,34 @@
     </style>
 </head>
 <body>
-<div class="text-center f-bold report-title">LAPORAN HASIL KONSULTASI SISWA</div>
+<div class="text-center f-bold report-title">LAPORAN KONSULTASI SISWA</div>
 <div class="text-center f-bold report-title">SMK MUHAMMADIYAH 1 SUKOHARJO</div>
-<hr>
-<div class="row">
-    <div class="col-xs-2">NIS</div>
-    <div class="col-xs-8">: {{ $data->user->username }}</div>
-</div>
-<div class="row">
-    <div class="col-xs-2">Nama Siswa</div>
-    <div class="col-xs-8">: {{ $data->user->siswa->nama }}</div>
-</div>
-<div class="row">
-    <div class="col-xs-2">Jurusan</div>
-    <div class="col-xs-8">: {{ $data->user->siswa->kelas->jurusan->nama }}</div>
-</div>
-<div class="row">
-    <div class="col-xs-2">Kelas</div>
-    <div class="col-xs-8">: {{ $data->user->siswa->kelas->nama }}</div>
-</div>
-<div class="row">
-    <div class="col-xs-2">Judul Laporan</div>
-    <div class="col-xs-8">: {{ $data->judul }}</div>
-</div>
+<div class="text-center">Periode Laporan {{ $tgl1 }} - {{ $tgl2 }} </div>
 <hr>
 <table id="my-table" class="table display">
     <thead>
     <tr>
         <th width="5%" class="text-center">#</th>
-        <th width="15%">Tanggal</th>
-        <th width="15%">Keterangan</th>
-        <th>Hasil</th>
-        <th width="15%">Status</th>
+        <th>Tanggal</th>
+        <th>NIS</th>
+        <th>Nama</th>
+        <th>Kelas</th>
+        <th>Pembimbing</th>
+        <th>Keterangan</th>
+        <th width="10%">Status</th>
     </tr>
     </thead>
     <tbody>
-    @foreach($data->konsultasi as $v)
+    @foreach($data as $v)
         <tr>
-            <td class="text-center">{{ $loop->index + 1 }}</td>
+            <td width="5%" class="text-center">{{ $loop->index + 1 }}</td>
             <td>{{ $v->tanggal }}</td>
+            <td>{{ $v->pengajuan->user->username }}</td>
+            <td>{{ $v->pengajuan->user->siswa->nama }}</td>
+            <td>{{ $v->pengajuan->user->siswa->kelas->nama }}</td>
+            <td>{{$v->pengajuan->user->siswa->pembimbing != null ? $v->pengajuan->user->siswa->pembimbing->guru->nama : '-'}}</td>
             <td>{{ $v->judul }}</td>
-            <td>{{ $v->keterangan }}</td>
-            <td class="text-center">{{ ucwords($v->status) }}</td>
+            <td>{{ $v->status }}</td>
         </tr>
     @endforeach
     </tbody>
@@ -84,13 +70,12 @@
 <div class="row">
     <div class="col-xs-3">
         <div class="text-center">
-            <p class="text-center">Siswa</p>
         </div>
     </div>
     <div class="col-xs-5"></div>
     <div class="col-xs-3">
         <div class="text-center">
-            <p class="text-center">Pembimbing</p>
+            <p class="text-center">Admin</p>
         </div>
     </div>
 </div>
@@ -99,13 +84,12 @@
 <div class="row">
     <div class="col-xs-3">
         <div class="text-center">
-            <p class="text-center">({{ $data->user->siswa->nama }})</p>
         </div>
     </div>
     <div class="col-xs-5"></div>
     <div class="col-xs-3">
         <div class="text-center">
-            <p class="text-center">({{ $data->user->siswa->pembimbing->guru->nama }})</p>
+            <p class="text-center">(Admin)</p>
         </div>
     </div>
 </div>

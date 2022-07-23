@@ -21,7 +21,7 @@
             </ol>
         </div>
         <div class="w-100 p-2">
-            @if($pengajuan->laporan_acc == null)
+            @if($pengajuan->laporan_acc == null && $pengajuan->laporan_menunggu == null && $pengajuan->laporan_selesai == null)
                 <div class="text-right mb-2 pr-3">
                     <a href="/pengajuan/tambah" class="btn btn-primary"><i class="fa fa-plus mr-1"></i><span
                             class="font-weight-bold">Tambah</span></a>
@@ -49,9 +49,9 @@
                         <td>{{ $v->status }}</td>
                         <td>{{ $v->deskripsi }}</td>
                         <td class="text-center">
-                            @if($v->status == 'terima')
+                            @if($v->status == 'terima' || $v->status == 'selesai')
                                 <a href="/konsultasi/{{ $v->id }}" class="btn btn-sm btn-info btn-detail"
-                                   data-id="{{ $v->id }}"><i class="fa fa-edit"></i></a>
+                                   data-id="{{ $v->id }}"><i class="fa fa-info"></i></a>
                             @else
                                 <span>-</span>
                             @endif

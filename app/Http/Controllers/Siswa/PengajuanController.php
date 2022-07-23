@@ -19,9 +19,11 @@ class PengajuanController extends CustomController
 
     public function index()
     {
-        $pengajuan = User::with('laporan_acc')->where('id', Auth::id())->first();
+        $pengajuan = User::with(['laporan_acc', 'laporan_menunggu', 'laporan_selesai'])->where('id', Auth::id())->first();
+//        return $pengajuan->toArray();
         $data = Pengajuan::with(['user.siswa', 'user.laporan_acc' ,'pembimbing.guru'])
             ->where('user_id', '=', Auth::id())
+            ->orderBy('id', 'DESC')
             ->get();
         return view('siswa.pengajuan.index')->with(['data' => $data, 'pengajuan' => $pengajuan]);
     }

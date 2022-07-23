@@ -69,9 +69,6 @@ Route::group(['prefix' => 'pengajuan'], function () {
     Route::get( '/', [\App\Http\Controllers\Siswa\PengajuanController::class, 'index']);
     Route::get( '/tambah', [\App\Http\Controllers\Siswa\PengajuanController::class, 'add_page']);
     Route::post( '/create', [\App\Http\Controllers\Siswa\PengajuanController::class, 'create']);
-    Route::get( '/edit/{id}', [\App\Http\Controllers\Siswa\PengajuanController::class, 'edit_page']);
-    Route::post( '/patch', [\App\Http\Controllers\Siswa\PengajuanController::class, 'patch']);
-    Route::post( '/delete', [\App\Http\Controllers\Siswa\PengajuanController::class, 'destroy']);
 });
 
 Route::group(['prefix' => 'pengajuan-laporan'], function () {
@@ -103,11 +100,30 @@ Route::group(['prefix' => 'siswa-bimbingan'], function () {
     Route::get( '/', [\App\Http\Controllers\Guru\SiswaController::class, 'index']);
     Route::get( '/detail/{id}', [\App\Http\Controllers\Guru\SiswaController::class, 'detail']);
     Route::post( '/patch', [\App\Http\Controllers\Guru\SiswaController::class, 'patch']);
+    Route::post( '/finish', [\App\Http\Controllers\Guru\SiswaController::class, 'finish']);
 });
 
 Route::group(['prefix' => 'laporan-pengajuan'], function () {
     Route::get( '/', [\App\Http\Controllers\Admin\LaporanController::class, 'index']);
     Route::get( '/data', [\App\Http\Controllers\Admin\LaporanController::class, 'data_pengajuan']);
     Route::get( '/cetak', [\App\Http\Controllers\Admin\LaporanController::class, 'cetak']);
+});
+
+Route::group(['prefix' => 'laporan-bimbingan-proses'], function () {
+    Route::get( '/', [\App\Http\Controllers\Admin\LaporanController::class, 'proses']);
+    Route::get( '/data', [\App\Http\Controllers\Admin\LaporanController::class, 'data_proses']);
+    Route::get( '/cetak', [\App\Http\Controllers\Admin\LaporanController::class, 'cetak_proses']);
+});
+
+Route::group(['prefix' => 'laporan-bimbingan-selesai'], function () {
+    Route::get( '/', [\App\Http\Controllers\Admin\LaporanController::class, 'selesai']);
+    Route::get( '/data', [\App\Http\Controllers\Admin\LaporanController::class, 'data_selesai']);
+    Route::get( '/cetak', [\App\Http\Controllers\Admin\LaporanController::class, 'cetak_selesai']);
+});
+
+Route::group(['prefix' => 'laporan-konsultasi'], function () {
+    Route::get( '/', [\App\Http\Controllers\Admin\LaporanController::class, 'konsultasi']);
+    Route::get( '/data', [\App\Http\Controllers\Admin\LaporanController::class, 'data_konsultasi']);
+    Route::get( '/cetak', [\App\Http\Controllers\Admin\LaporanController::class, 'cetak_konsultasi']);
 });
 

@@ -52,8 +52,14 @@
                         <td>{{ $v->user->pengajuan_terakhir != null ? $v->user->pengajuan_terakhir->status : '-'}}</td>
                         <td>
                             @if($v->user->pengajuan_terakhir != null)
-                                <a href="/siswa-bimbingan/detail/{{ $v->user->pengajuan_terakhir->id }}" class="btn btn-sm btn-info btn-edit"
+                                <a href="/siswa-bimbingan/detail/{{ $v->user->pengajuan_terakhir->id }}"
+                                   class="btn btn-sm btn-info btn-edit"
                                    data-id="{{ $v->id }}"><i class="fa fa-info"></i></a>
+                                @if($v->user->pengajuan_terakhir->status == 'terima')
+                                    <a href="#"
+                                       class="btn btn-sm btn-success btn-selesai"
+                                       data-id="{{ $v->user->pengajuan_terakhir->id }}"><i class="fa fa-check"></i></a>
+                                @endif
                             @else
                                 <span>-</span>
                             @endif
@@ -70,19 +76,19 @@
 @section('js')
     <script src="{{ asset('/js/helper.js') }}"></script>
     <script type="text/javascript">
-        function destroy(id) {
-            AjaxPost('/admin/delete', {id}, function () {
+        function setFinish(id) {
+            AjaxPost('/siswa-bimbingan/finish', {id}, function () {
                 window.location.reload();
             });
         }
 
         $(document).ready(function () {
             $('#table-data').DataTable();
-            $('.btn-delete').on('click', function (e) {
+            $('.btn-selesai').on('click', function (e) {
                 e.preventDefault();
                 let id = this.dataset.id;
-                AlertConfirm('Apakah Anda Yakin?', 'Data yang sudah dihapus tidak dapat di kembalikan', function () {
-                    destroy(id);
+                AlertConfirm('Apakah Anda Yakin?', 'Anda yakin ingin menyatakan siswa selesai bimbingan?', function () {
+                    setFinish(id);
                 })
             });
         });

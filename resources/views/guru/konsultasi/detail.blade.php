@@ -180,6 +180,11 @@
                                     <option value="revisi">Revisi</option>
                                 </select>
                             </div>
+                            <div class="w-100 mb-1 d-none" id="panel-deadline">
+                                <label for="deadline" class="form-label">Deadline Revisi</label>
+                                <input type="date" class="form-control-file" id="deadline"
+                                       name="deadline" value="{{ date('Y-m-d') }}">
+                            </div>
                             <div class="w-100 mb-1 d-none" id="panel-file">
                                 <label for="file" class="form-label">File Revisi</label>
                                 <input type="file" class="form-control-file" id="file" placeholder="File"
@@ -213,11 +218,15 @@
                     $('#panel-file').removeClass('d-none');
                     $('#panel-keterangan').addClass('d-block');
                     $('#panel-keterangan').removeClass('d-none');
+                    $('#panel-deadline').addClass('d-block');
+                    $('#panel-deadline').removeClass('d-none');
                 } else {
                     $('#panel-file').addClass('d-none');
                     $('#panel-file').removeClass('d-block');
                     $('#panel-keterangan').addClass('d-none');
                     $('#panel-keterangan').removeClass('d-block');
+                    $('#panel-deadline').addClass('d-none');
+                    $('#panel-deadline').removeClass('d-block');
                 }
             });
         });

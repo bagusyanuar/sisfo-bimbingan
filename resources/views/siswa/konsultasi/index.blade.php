@@ -23,6 +23,9 @@
                 <li class="breadcrumb-item">
                     <a href="/dashboard">Dashboard</a>
                 </li>
+                <li class="breadcrumb-item">
+                    <a href="/pengajuan">Pengajuan</a>
+                </li>
                 <li class="breadcrumb-item active" aria-current="page">Konsultasi Laporan
                 </li>
             </ol>
@@ -52,24 +55,42 @@
                                 </div>
                                 <div class="col-lg-9 col-md-9">
                                     <span class="font-weight-bold">
-                                        : {{ $data->pembimbing->guru->nama }}
+                                        : {{ $data->user->siswa->pembimbing->guru->nama }}
                                     </span>
                                 </div>
                             </div>
+                            @if($data->status == 'selesai')
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-3">
+                                    <span class="font-weight-bold">
+                                        Status
+                                    </span>
+                                    </div>
+                                    <div class="col-lg-9 col-md-9">
+                                    <span class="font-weight-bold">
+                                        : Bimbingan Telah Selesai
+                                    </span>
+                                    </div>
+                                </div>
+                            @endif
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="text-right mb-2 pr-3">
-                <a href="/konsultasi/{{ $data->id }}/tambah" class="btn btn-primary"><i
-                        class="fa fa-plus mr-1"></i><span
-                        class="font-weight-bold">Tambah Konsultasi</span></a>
-            </div>
+            @if($data->status == 'terima')
+                <div class="text-right mb-2 pr-3">
+
+                    <a href="/konsultasi/{{ $data->id }}/tambah" class="btn btn-primary"><i
+                            class="fa fa-plus mr-1"></i><span
+                            class="font-weight-bold">Tambah Konsultasi</span></a>
+                </div>
+            @endif
             <table id="table-data" class="display w-100 table table-bordered">
                 <thead>
                 <tr>
                     <th width="5%" class="text-center">#</th>
                     <th>Tanggal</th>
+                    <th>Deadline Revisi</th>
                     <th>Judul Konsultasi</th>
                     <th>File Konsultasi</th>
                     <th>File Revisi</th>
@@ -82,6 +103,7 @@
                     <tr>
                         <td width="5%" class="text-center">{{ $loop->index + 1 }}</td>
                         <td>{{ $v->tanggal }}</td>
+                        <td>{{ $v->deadline == null ? '-' : $v->deadline }}</td>
                         <td>{{ $v->judul }}</td>
                         <td>
                             <a href="{{ asset('/file').'/'.$v->file_konsultasi }}" target="_blank">
@@ -122,7 +144,9 @@
         }
 
         $(document).ready(function () {
-            $('#table-data').DataTable();
+            $('#table-data').DataTable({
+                "scrollX": true
+            });
             $('.btn-delete').on('click', function (e) {
                 e.preventDefault();
                 let id = this.dataset.id;

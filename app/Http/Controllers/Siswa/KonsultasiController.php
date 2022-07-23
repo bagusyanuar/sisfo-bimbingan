@@ -18,7 +18,7 @@ class KonsultasiController extends CustomController
 
     public function index($id)
     {
-        $data = Pengajuan::with(['user', 'pembimbing.guru', 'konsultasi' => function ($q) {
+        $data = Pengajuan::with(['user.siswa.pembimbing.guru', 'konsultasi' => function ($q) {
             return $q->orderBy('id', 'DESC');
         }])
             ->where('user_id', Auth::id())
@@ -34,7 +34,7 @@ class KonsultasiController extends CustomController
             ->where('status', 'menunggu')
             ->first();
         if ($konsultasi) {
-            return redirect()->back()->with(['failed' => 'Masih Ada Konsultasi Yang Belum Di tanggapi oleh dosen!']);
+            return redirect()->back()->with(['failed' => 'Masih Ada Konsultasi Yang Belum Di tanggapi oleh guru!']);
         }
         $data = Pengajuan::with(['user', 'pembimbing.guru'])
             ->where('user_id', Auth::id())
@@ -70,7 +70,7 @@ class KonsultasiController extends CustomController
 
     public function cetak($id)
     {
-        $data = Pengajuan::with(['user.siswa.kelas.jurusan', 'pembimbing.guru', 'konsultasi' => function ($q) {
+        $data = Pengajuan::with(['user.siswa.kelas.jurusan', 'user.siswa.pembimbing.guru', 'konsultasi' => function ($q) {
             return $q->orderBy('id', 'ASC');
         }])
             ->where('user_id', Auth::id())

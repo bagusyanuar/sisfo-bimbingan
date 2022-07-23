@@ -149,10 +149,24 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="/laporan-pengajuan"
+                                    <a href="/laporan-bimbingan-proses"
                                        class="nav-link">
                                         <i class="fa fa-circle-o nav-icon" aria-hidden="true"></i>
-                                        <p>Laporan Pengajuan</p>
+                                        <p>Proses Bimbingan</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/laporan-bimbingan-selesai"
+                                       class="nav-link">
+                                        <i class="fa fa-circle-o nav-icon" aria-hidden="true"></i>
+                                        <p>Bimbingan Selesai</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/laporan-konsultasi"
+                                       class="nav-link">
+                                        <i class="fa fa-circle-o nav-icon" aria-hidden="true"></i>
+                                        <p>Konsultasi</p>
                                     </a>
                                 </li>
                             </ul>
