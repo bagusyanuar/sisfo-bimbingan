@@ -65,10 +65,13 @@ Route::group(['prefix' => 'berkas'], function () {
     Route::get( '/', [\App\Http\Controllers\Siswa\BerkasController::class, 'index']);
 });
 
-Route::group(['prefix' => 'pengajuan'], function () {
-    Route::get( '/', [\App\Http\Controllers\Siswa\PengajuanController::class, 'index']);
-    Route::get( '/tambah', [\App\Http\Controllers\Siswa\PengajuanController::class, 'add_page']);
-    Route::post( '/create', [\App\Http\Controllers\Siswa\PengajuanController::class, 'create']);
+Route::group(['prefix' => 'berkas'], function () {
+    Route::get( '/', [\App\Http\Controllers\Siswa\BerkasController::class, 'index']);
+});
+
+Route::group(['prefix' => 'password-reset'], function () {
+    Route::get( '/', [\App\Http\Controllers\Siswa\BerkasController::class, 'password_page']);
+    Route::post( '/reset', [\App\Http\Controllers\Siswa\BerkasController::class, 'password_reset']);
 });
 
 Route::group(['prefix' => 'pengajuan-laporan'], function () {

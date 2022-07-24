@@ -32,7 +32,7 @@ class AdminController extends CustomController
             $data = [
                 'username' => $this->postField('username'),
                 'password' => Hash::make($this->postField('password')),
-                'role' => $this->postField('role'),
+                'role' => 'admin',
             ];
             User::create($data);
             return redirect()->back()->with(['success' => 'Berhasil Menambahkan Data...']);
@@ -55,7 +55,7 @@ class AdminController extends CustomController
 
             $data = [
                 'username' => $this->postField('username'),
-                'role' => $this->postField('role'),
+                'role' => 'admin',
             ];
 
             if ($this->postField('password') !== '') {

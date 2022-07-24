@@ -17,6 +17,58 @@
                 </li>
             </ol>
         </div>
+        <img src="{{ asset('/assets/icon/profil1.jpg') }}" class="w-100 mb-3"/>
+        <div class="mb-2">
+            <p class="font-weight-bold">Visi Sekolah</p>
+            <p class="text-justify">Sekolah unggul yang menghasilkan lulusan beriman, bertaqwa,berakhlaq mulia,
+                kompeten, mandiri dan tangguh menghadapi era global</p>
+        </div>
+        <div class="mb-2">
+            <p class="font-weight-bold">Misi Sekolah</p>
+            <ol type="a">
+                <li>
+                    <p>Menumbuhkan karakter melalui pembiasaan nilai nilai Islami</p>
+                </li>
+                <li>
+                    <p>Menguatkan pendidikan ketarunaan</p>
+                </li>
+                <li>
+                    <p>Menerapkan budaya industri di lingkungan sekolah
+                    </p>
+                </li>
+                <li>
+                    <p>Menerapkan pembelajaran berbasis industri</p>
+                </li>
+                <li>
+                    <p>Menerapkan pembelajaran active learning
+                    </p>
+                </li>
+                <li>
+                    <p>Melaksanakan uji kompetensi melalui industri dan atau lembaga sertifikasi profesi</p>
+                </li>
+                <li>
+                    <p>Membangun sumber daya manusia yang mandiri dan profesional</p>
+                </li>
+                <li>
+                    <p>Menerapkan sistem manajemen mutu dan pelayanan prima secara konsisten dan berkelanjutan</p>
+                </li>
+            </ol>
+        </div>
+        <div class="mb-2">
+            <p class="font-weight-bold">Tujuan</p>
+            <ol>
+                <li><p>Menghasilkan lulusan yang berakhlaq mulia, santun dan percaya diri</p></li>
+                <li><p>Menghasilkan lulusan yang mampu berwira usaha dan siap memasuki lapangan kerja atau pendidikan
+                        yang lebih tinggi.</p></li>
+                <li><p>Menghasilkan lulusan yang handal dan mampu bersaing di era global</p></li>
+                <li><p>Mewujudkan kepuasan pelanggan</p></li>
+                <li><p>Mewujudkan perilaku warga sekolah yang sesuai dengan budaya industri</p></li>
+            </ol>
+        </div>
+        <div class="mb-2">
+            <p class="font-weight-bold">Slogan</p>
+            <p>“ Disiplin, Cerdas, Sukses ”</p>
+        </div>
     </div>
 
 @endsection
