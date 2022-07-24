@@ -61,17 +61,17 @@ Route::group(['prefix' => 'kelas'], function () {
     Route::post( '/delete', [\App\Http\Controllers\Admin\KelasController::class, 'destroy']);
 });
 
-Route::group(['prefix' => 'berkas'], function () {
-    Route::get( '/', [\App\Http\Controllers\Siswa\BerkasController::class, 'index']);
+
+Route::group(['prefix' => 'pengajuan'], function () {
+    Route::get( '/', [\App\Http\Controllers\Siswa\PengajuanController::class, 'index']);
+    Route::get( '/tambah', [\App\Http\Controllers\Siswa\PengajuanController::class, 'add_page']);
+    Route::post( '/create', [\App\Http\Controllers\Siswa\PengajuanController::class, 'create']);
 });
 
 Route::group(['prefix' => 'berkas'], function () {
     Route::get( '/', [\App\Http\Controllers\Siswa\BerkasController::class, 'index']);
-});
-
-Route::group(['prefix' => 'password-reset'], function () {
-    Route::get( '/', [\App\Http\Controllers\Siswa\BerkasController::class, 'password_page']);
-    Route::post( '/reset', [\App\Http\Controllers\Siswa\BerkasController::class, 'password_reset']);
+    Route::get( '/tambah', [\App\Http\Controllers\Siswa\BerkasController::class, 'add_page']);
+    Route::get( '/create', [\App\Http\Controllers\Siswa\BerkasController::class, 'create']);
 });
 
 Route::group(['prefix' => 'pengajuan-laporan'], function () {
@@ -129,4 +129,6 @@ Route::group(['prefix' => 'laporan-konsultasi'], function () {
     Route::get( '/data', [\App\Http\Controllers\Admin\LaporanController::class, 'data_konsultasi']);
     Route::get( '/cetak', [\App\Http\Controllers\Admin\LaporanController::class, 'cetak_konsultasi']);
 });
+
+
 

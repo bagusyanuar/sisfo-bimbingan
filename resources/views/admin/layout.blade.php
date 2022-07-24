@@ -187,13 +187,13 @@
                                 <p>Pengajuan Judul</p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="/password-reset"
-                               class="nav-link">
-                                <i class="fa fa-lock nav-icon" aria-hidden="true"></i>
-                                <p>Ganti Password</p>
-                            </a>
-                        </li>
+{{--                        <li class="nav-item">--}}
+{{--                            <a href="/password-reset"--}}
+{{--                               class="nav-link">--}}
+{{--                                <i class="fa fa-lock nav-icon" aria-hidden="true"></i>--}}
+{{--                                <p>Ganti Password</p>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
                     @endif
                     @if(auth()->user()->role == 'guru')
 

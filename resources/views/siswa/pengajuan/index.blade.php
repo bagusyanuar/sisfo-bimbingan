@@ -45,7 +45,7 @@
                         <td width="5%" class="text-center">{{ $loop->index + 1 }}</td>
                         <td>{{ $v->judul }}</td>
                         <td><a href="{{ asset('/file').'/'.$v->file }}" target="_blank">{{ $v->file }}</a></td>
-                        <td>{{$v->pembimbing != null ? $v->pembimbing->guru->nama : '-'}}</td>
+                        <td>{{$v->user->siswa->pembimbing != null ? $v->user->siswa->pembimbing->guru->nama : '-'}}</td>
                         <td>{{ $v->status }}</td>
                         <td>{{ $v->deskripsi }}</td>
                         <td class="text-center">
