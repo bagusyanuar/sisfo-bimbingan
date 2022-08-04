@@ -130,13 +130,13 @@
                                         <p>Pengajuan Berkas</p>
                                     </a>
                                 </li>
-{{--                                <li class="nav-item">--}}
-{{--                                    <a href="/pengajuan-laporan"--}}
-{{--                                       class="nav-link">--}}
-{{--                                        <i class="fa fa-circle-o nav-icon" aria-hidden="true"></i>--}}
-{{--                                        <p>Pengajuan Laporan</p>--}}
-{{--                                    </a>--}}
-{{--                                </li>--}}
+                                {{--                                <li class="nav-item">--}}
+                                {{--                                    <a href="/pengajuan-laporan"--}}
+                                {{--                                       class="nav-link">--}}
+                                {{--                                        <i class="fa fa-circle-o nav-icon" aria-hidden="true"></i>--}}
+                                {{--                                        <p>Pengajuan Laporan</p>--}}
+                                {{--                                    </a>--}}
+                                {{--                                </li>--}}
                             </ul>
                         </li>
                         <li class="nav-item has-treeview">
@@ -180,20 +180,22 @@
                                 <p>Pengajuan Berkas</p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="/pengajuan"
-                               class="nav-link">
-                                <i class="fa fa-briefcase nav-icon" aria-hidden="true"></i>
-                                <p>Pengajuan Judul</p>
-                            </a>
-                        </li>
-{{--                        <li class="nav-item">--}}
-{{--                            <a href="/password-reset"--}}
-{{--                               class="nav-link">--}}
-{{--                                <i class="fa fa-lock nav-icon" aria-hidden="true"></i>--}}
-{{--                                <p>Ganti Password</p>--}}
-{{--                            </a>--}}
-{{--                        </li>--}}
+                        @if(Helpers::checkBerkas())
+                            <li class="nav-item">
+                                <a href="/pengajuan"
+                                   class="nav-link">
+                                    <i class="fa fa-briefcase nav-icon" aria-hidden="true"></i>
+                                    <p>Pengajuan Judul</p>
+                                </a>
+                            </li>
+                        @endif
+                        {{--                        <li class="nav-item">--}}
+                        {{--                            <a href="/password-reset"--}}
+                        {{--                               class="nav-link">--}}
+                        {{--                                <i class="fa fa-lock nav-icon" aria-hidden="true"></i>--}}
+                        {{--                                <p>Ganti Password</p>--}}
+                        {{--                            </a>--}}
+                        {{--                        </li>--}}
                     @endif
                     @if(auth()->user()->role == 'guru')
 
