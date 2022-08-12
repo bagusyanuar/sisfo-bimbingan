@@ -16,13 +16,17 @@ class KonsultasiController extends CustomController
         parent::__construct();
     }
 
-    public function index($id)
+    public function index()
     {
         $data = Pengajuan::with(['user.siswa.pembimbing.guru', 'konsultasi' => function ($q) {
             return $q->orderBy('id', 'DESC');
         }])
             ->where('user_id', Auth::id())
-            ->where('id', $id)
+            ->where(function ($q) {
+                return $q
+                    ->where('status', '=', 'terima')
+                    ->orWhere('status', '=', 'selesai');
+            })
             ->first();
         return view('siswa.konsultasi.index')->with(['data' => $data]);
     }
@@ -62,7 +66,7 @@ class KonsultasiController extends CustomController
                 $this->uploadImage('file', $nama_file, 'file');
             }
             Konsultasi::create($data);
-            return redirect('/konsultasi/' . $this->postField('id'))->with(['success' => 'Berhasil Menambahkan Data...']);
+            return redirect('/konsultasi')->with(['success' => 'Berhasil Menambahkan Data...']);
         } catch (\Exception $e) {
             return redirect()->back()->with(['failed' => 'Terjadi Kesalahan ' . $e->getMessage()]);
         }

@@ -189,6 +189,15 @@
                                 </a>
                             </li>
                         @endif
+                        @if(Helpers::checkJudul())
+                            <li class="nav-item">
+                                <a href="/konsultasi"
+                                   class="nav-link">
+                                    <i class="fa fa-briefcase nav-icon" aria-hidden="true"></i>
+                                    <p>Konsultasi</p>
+                                </a>
+                            </li>
+                        @endif
                         {{--                        <li class="nav-item">--}}
                         {{--                            <a href="/password-reset"--}}
                         {{--                               class="nav-link">--}}

@@ -36,7 +36,7 @@
                     <th>Pembimbing</th>
                     <th>Status</th>
                     <th>Deskripsi</th>
-                    <th width="12%">Action</th>
+{{--                    <th width="12%">Action</th>--}}
                 </tr>
                 </thead>
                 <tbody>
@@ -48,14 +48,14 @@
                         <td>{{$v->user->siswa->pembimbing != null ? $v->user->siswa->pembimbing->guru->nama : '-'}}</td>
                         <td>{{ $v->status }}</td>
                         <td>{{ $v->deskripsi }}</td>
-                        <td class="text-center">
-                            @if($v->status == 'terima' || $v->status == 'selesai')
-                                <a href="/konsultasi/{{ $v->id }}" class="btn btn-sm btn-info btn-detail"
-                                   data-id="{{ $v->id }}"><i class="fa fa-info"></i></a>
-                            @else
-                                <span>-</span>
-                            @endif
-                        </td>
+{{--                        <td class="text-center">--}}
+{{--                            @if($v->status == 'terima' || $v->status == 'selesai')--}}
+{{--                                <a href="/konsultasi/{{ $v->id }}" class="btn btn-sm btn-info btn-detail"--}}
+{{--                                   data-id="{{ $v->id }}"><i class="fa fa-info"></i></a>--}}
+{{--                            @else--}}
+{{--                                <span>-</span>--}}
+{{--                            @endif--}}
+{{--                        </td>--}}
                     </tr>
                 @endforeach
                 </tbody>

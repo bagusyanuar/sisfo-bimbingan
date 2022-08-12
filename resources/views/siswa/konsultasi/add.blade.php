@@ -39,7 +39,7 @@
                                 <input type="hidden" name="id" value="{{ $data->id }}">
                                 <div class="w-100 mb-1">
                                     <label for="judul" class="form-label">Judul Konsultasi</label>
-                                    <input type="text" class="form-control" id="judul" placeholder="Judul Laporan"
+                                    <input type="text" class="form-control" id="judul" placeholder="Judul Konsultasi"
                                            name="judul">
                                 </div>
                                 <div class="w-100 mb-1">
