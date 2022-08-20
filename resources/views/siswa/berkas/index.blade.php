@@ -52,8 +52,6 @@
                         <td>{{ $v->keterangan }}</td>
                         <td class="text-center">
                             @if($v->status == 'menunggu')
-                                <a href="/berkas/edit/{{ $v->id }}" class="btn btn-sm btn-warning btn-edit"
-                                   data-id="{{ $v->id }}"><i class="fa fa-edit"></i></a>
                                 <a href="#" class="btn btn-sm btn-danger btn-delete" data-id="{{ $v->id }}"><i
                                         class="fa fa-trash"></i></a>
                             @else

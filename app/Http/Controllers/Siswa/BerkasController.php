@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Siswa;
 
 use App\Helper\CustomController;
 use App\Models\Berkas;
+use App\Models\Jurusan;
 use App\Models\Konsultasi;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -64,6 +65,17 @@ class BerkasController extends CustomController
             return redirect('/berkas')->with(['success' => 'Berhasil Menambahkan Data...']);
         } catch (\Exception $e) {
             return redirect()->back()->with(['failed' => 'Terjadi Kesalahan ' . $e->getMessage()]);
+        }
+    }
+
+    public function destroy()
+    {
+        try {
+            $id = $this->postField('id');
+            Berkas::destroy($id);
+            return $this->jsonResponse('success', 200);
+        }catch (\Exception $e) {
+            return $this->jsonResponse('failed', 500);
         }
     }
     public function password_page()

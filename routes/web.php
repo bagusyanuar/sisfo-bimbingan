@@ -72,6 +72,7 @@ Route::group(['prefix' => 'berkas'], function () {
     Route::get( '/', [\App\Http\Controllers\Siswa\BerkasController::class, 'index']);
     Route::get( '/tambah', [\App\Http\Controllers\Siswa\BerkasController::class, 'add_page']);
     Route::post( '/create', [\App\Http\Controllers\Siswa\BerkasController::class, 'create']);
+    Route::post( '/delete', [\App\Http\Controllers\Siswa\BerkasController::class, 'destroy']);
 });
 
 Route::group(['prefix' => 'pengajuan-laporan'], function () {
